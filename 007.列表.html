@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQM demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="jqm1.4.5/jquery.mobile-1.4.5.css">
+    <script src="jquery/jquery-1.11.1.min.js"></script>
+    <script src="jqm1.4.5/jquery.mobile-1.4.5.js"></script>
+</head>
+<body>
+    <div data-role="page" id="index">
+
+        <div data-role="header" data-position-fixed="fixed">
+            <h1>1</h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+
+            <h2>有序列表：</h2>
+            <ol data-role="listview">
+                <li><a href="#">列表项</a></li>
+                <li><a href="#">列表项</a></li>
+                <li><a href="#">列表项</a></li>
+            </ol>
+            <h2>无序列表：</h2>
+            <ul data-role="listview">
+                <li><a href="#">列表项</a></li>
+                <li><a href="#">列表项</a></li>
+                <li><a href="#">列表项</a></li>
+            </ul>
+
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar" data-iconpos="bottom">
+                <ul>
+                    <li><a href="#anylink" data-icon="search">查询</a></li>
+                    <li><a href="#anylink" data-icon="bullets">详情</a></li>
+                    <li><a href="#anylink" data-icon="user">我的</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div data-role="page" id="index2">
+
+        <div data-role="header">
+            <h1>2</h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <p>234<a href="#index">index</a></p>
+        </div>
+
+        <div data-role="footer">
+            <h1>2</h1>
+        </div>
+
+    </div>
+
+</body>
+</html>
