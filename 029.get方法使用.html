@@ -1,0 +1,15 @@
+<script src="jquery/jquery-1.11.1.min.js"></script>
+<script>
+    $(function () {
+        var URL="https://cors-anywhere.herokuapp.com/http://www.haoweichi.com/";
+
+        $.get(URL,function(data,status){
+            console.log(status);
+            console.log(data);
+            $("#msg").append(data);//只能加到get里面
+        });
+
+        // $("body").append(_data);不能加到这里
+    });
+</script>
+<dc id="msg"></dc>
