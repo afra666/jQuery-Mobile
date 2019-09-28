@@ -1,0 +1,17 @@
+<meta charset="UTF-8">
+<script src="jquery/jquery-1.11.1.min.js"></script>
+<!--<script src="jqm1.4.5/jquery.mobile-1.4.5.js"></script>-->
+<script>
+    $(function () {
+      $("p").each(function (i) {
+          if($(this).text()==="this is q"){
+              $(this).text("?")
+          }
+      })
+
+    });
+</script>
+<body> this is body</body>
+<p>this is p</p>
+<p>this is q</p>
+<p>this is r</p>
