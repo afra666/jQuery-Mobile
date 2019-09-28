@@ -1,0 +1,11 @@
+<script src="jquery/jquery-1.11.1.min.js"></script>
+<script>
+    $(function () {
+        var thisSite="https://cors-anywhere.herokuapp.com/http://www.haoweichi.com/";
+        $.get(thisSite,function (data) {
+            $("#div1").html(data);
+        })
+        // $("body").append(_data);不能加到这里
+    });
+</script>
+<div id="div1"></div>
