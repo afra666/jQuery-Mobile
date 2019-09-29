@@ -1,0 +1,13 @@
+<input type="button" value="show or hide" id="btn1">
+<br>
+<input type="button" value="BUTTON" id="btn2">
+<script src="jquery/jquery-1.11.1.min.js"></script>
+<script>
+    $(function () {
+        var stat=false;
+      $("#btn1").click(function () {
+          stat=!stat;
+          $("#btn2").attr("disabled",stat);
+      })
+    });
+</script>
