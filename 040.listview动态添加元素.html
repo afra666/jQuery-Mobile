@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="jqm1.4.5/jquery.mobile-1.4.5.css">
+<script src="jquery/jquery-1.11.1.min.js"></script>
+<script src="jqm1.4.5/jquery.mobile-1.4.5.js"></script>
+
+<div>
+    <label >Start Station</label>
+    <input type="text" id="txtStart">
+    <label >Arrive Station</label>
+    <input type="text" id="txtArrive">
+    <label >Train Number</label>
+    <input type="text" id="txtNum">
+    <input type="button" value="Search" id="btnSearch">
+</div>
+<ul data-role="listview" id="listResult">
+    <li><a href="#">Default is right arrow</a></li>
+    <li data-icon="plus"><a href="#">data-icon="plus"</a></li>
+    <li data-icon="minus"><a href="#">data-icon="minus"</a></li>
+    <li data-icon="delete"><a href="#">data-icon="delete"</a></li>
+    <li data-icon="location"><a href="#">data-icon="location"</a></li>
+    <li data-icon="false"><a href="#">data-icon="false"</a></li>
+</ul>
+<script>
+    $(function () {
+      $("#btnSearch").click(function () {
+         $("#listResult").append('<li data-icon="false"><a href="#">data-icon="false"</a></li>');
+         $("#listResult").listview('refresh');
+      })
+    });
+</script>
