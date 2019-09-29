@@ -1,0 +1,50 @@
+<meta charset="UTF-8">
+<link rel="stylesheet" href="jqm1.4.5/jquery.mobile-1.4.5.css">
+<script src="jquery/jquery-1.11.1.min.js"></script>
+<script src="jqm1.4.5/jquery.mobile-1.4.5.js"></script>
+
+<div>
+    <label >Start Station</label>
+    <input type="text" id="txtStart">
+    <label >Arrive Station</label>
+    <input type="text" id="txtArrive">
+    <label >Train Number</label>
+    <input type="text" id="txtNum">
+    <input type="button" value="Search" id="btnSearch">
+</div>
+<ul data-role="listview" id="listResult">
+
+</ul>
+
+
+
+https://cors-anywhere.herokuapp.com/www.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeByStationName?StartStation=%E5%8C%97%E4%BA%AC&ArriveStation=%E5%A4%A9%E6%B4%A5&UserID=
+
+http://www.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeDataSetByTrainCode?TrainCode=Z7&&UserID=
+<script>
+
+
+        function search(txtStart,txtArrive,txtNum){
+            var cors="https://cors-anywhere.herokuapp.com/";
+            if (txtNum&&(!txtStart)&&(!txtArrive)){
+                var searchURL=cors+
+                    "http://www.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeDataSetByTrainCode?TrainCode="+
+                        txtNum+"&UserID=";
+                console.log(searchURL);
+                $.get(searchURL,function (data,status) {
+                    console.log(data);
+                })
+            }
+            else if ((!txtNum)&&(txtStart)&&(txtArrive)){
+                console.log();
+            }
+            else {
+                 alert("输入有误，请重新输入");
+            }
+        }
+    $(function () {
+        $("#btnSearch").click(function () {
+           search($("#txtStart").val(),$("#txtArrive").val(),$("#txtNum").val());
+        })
+    });
+</script>
