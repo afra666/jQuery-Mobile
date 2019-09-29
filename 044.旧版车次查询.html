@@ -1,0 +1,93 @@
+<meta charset="UTF-8">
+<link rel="stylesheet" href="jqm1.4.5/jquery.mobile-1.4.5.css">
+<script src="jquery/jquery-1.11.1.min.js"></script>
+<script src="jqm1.4.5/jquery.mobile-1.4.5.js"></script>
+
+<div>
+    <label >Start Station</label>
+    <input type="text" id="txtStart">
+    <label >Arrive Station</label>
+    <input type="text" id="txtArrive">
+    <label >Train Number</label>
+    <input type="text" id="txtNum">
+    <input type="button" value="Search" id="btnSearch">
+</div>
+<ul data-role="listview" id="listResult">
+<!--    <li><a>123</a></li>-->
+</ul>
+
+
+<script>
+
+
+    function search(txtStart,txtArrive,txtNum){
+        var cors="https://cors-anywhere.herokuapp.com/";
+        if (txtNum&&(!txtStart)&&(!txtArrive)){
+            var searchURL=cors+
+                "http://www.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeDataSetByTrainCode?TrainCode="+
+                txtNum+"&UserID=";
+
+            $.get(searchURL,function (data,status) {
+                var TrainCode=$(data).find("TrainCode").text();
+                var FirstStation=$(data).find("FirstStation").text();
+                var LastStation=$(data).find("LastStation").text();
+                var StartStation=$(data).find("StartStation").text();
+                var StartTime=$(data).find("StartTime").text();
+                var ArriveStation=$(data).find("ArriveStation").text();
+                var ArriveTime=$(data).find("ArriveTime").text();
+                var searchResult='<li><a>' +
+                    '车次:'+TrainCode+'<br>'+
+                    '发车站:'+StartStation+'<br>'+'发车时间:'+StartTime+'<br>'+
+                    '到达站:'+ArriveStation +'<br>'+'到达时间:'+ArriveTime+'<br>'
+
+
+                    '</a></li>';
+                console.log(data);
+                $("#listResult").html("");
+                $("#listResult").append(searchResult);
+                $("#listResult").listview("refresh");
+
+            });
+        }
+        else if ((!txtNum)&&(txtStart)&&(txtArrive)){
+            var searchURL=cors+
+                    "www.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeByStationName?StartStation=" +
+                txtStart +
+                "&" +
+                "ArriveStation=" +
+                txtArrive +
+                "&UserID=";
+            $.get(searchURL,function (data,status) {
+                var TrainCode=$(data).find("TrainCode").text();
+                var FirstStation=$(data).find("FirstStation").text();
+                var LastStation=$(data).find("LastStation").text();
+                var StartStation=$(data).find("StartStation").text();
+                var StartTime=$(data).find("StartTime").text();
+                var ArriveStation=$(data).find("ArriveStation").text();
+                var ArriveTime=$(data).find("ArriveTime").text();
+                var searchResult='<li><a>' +
+                    '车次:'+TrainCode+'<br>'+
+                    '发车站:'+StartStation+'<br>'+'发车时间:'+StartTime+'<br>'+
+                    '到达站:'+ArriveStation +'<br>'+'到达时间:'+ArriveTime+'<br>'+
+
+
+                '</a></li>';
+                console.log(data);
+
+                $("#listResult").append("searchResult");
+                $("#listResult").append("<br>");
+
+            });
+
+
+        }
+        else {
+            alert("输入有误，请重新输入");
+        }
+    }
+    $(function () {
+        $("#btnSearch").click(function () {
+            search($("#txtStart").val(),$("#txtArrive").val(),$("#txtNum").val());
+        })
+    });
+</script>
